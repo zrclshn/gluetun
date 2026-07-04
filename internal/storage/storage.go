@@ -36,7 +36,7 @@ type Logger interface {
 func New(logger Logger, disk bool, directoryPath, legacyFilepath string) (storage *Storage, err error) {
 	// A unit test prevents [parseHardcodedServers] from ever failing,
 	// and ensures all providers are part of the servers returned.
-	hardcodedServers := parseHardcodedServers()
+	hardcodedServers := parseHardcodedServers(directoryPath)
 
 	storage = &Storage{
 		hardcodedServers: hardcodedServers,

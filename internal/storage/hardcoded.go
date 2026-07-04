@@ -10,7 +10,7 @@ import (
 	"github.com/qdm12/gluetun/internal/models"
 )
 
-func parseHardcodedServers() (allServers models.AllServers) {
+func parseHardcodedServers(directoryPath string) (allServers models.AllServers) {
 	allProviders := providers.All()
 
 	const version = 1
@@ -35,8 +35,7 @@ func parseHardcodedServers() (allServers models.AllServers) {
 				filename, provider))
 		}
 
-		const serversPath = "/gluetun/servers/"
-		providerServers.Filepath = filepath.Join(serversPath, filename)
+		providerServers.Filepath = filepath.Join(directoryPath, filename)
 		allServers.ProviderToServers[provider] = providerServers
 	}
 
